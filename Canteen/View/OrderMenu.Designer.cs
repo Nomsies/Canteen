@@ -116,7 +116,7 @@
             label1.TabIndex = 6;
             label1.Text = "label1";
             // 
-            // MenuForm
+            // OrderMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -128,8 +128,8 @@
             Controls.Add(btnCart);
             Controls.Add(detailPanel);
             Controls.Add(menuPanel);
-            Name = "MenuForm";
-            Text = "MenuForm";
+            Name = "OrderMenu";
+            StartPosition = FormStartPosition.CenterScreen;
             Resize += MenuForm_Resize;
             detailPanel.ResumeLayout(false);
             ResumeLayout(false);

@@ -6,7 +6,6 @@ namespace Canteen.View
     public partial class OrderMenu : Form
     {
         private readonly ProductController _control = new ProductController();
-
         public OrderMenu()
         {
             InitializeComponent();
