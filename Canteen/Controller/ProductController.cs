@@ -4,7 +4,7 @@ using Canteen.Service;
 
 namespace Canteen.Controller
 {
-    public class ProductController
+    public class ProductController : ProductService 
     {
         public enum category { All, Food, Drink }
         private readonly SqlHelper helper;
@@ -28,7 +28,6 @@ namespace Canteen.Controller
 
         public List<FlowLayoutPanel> ShowMenu(category category)
         {
-            var menuService = new MenuPanelService();
             List<Menu> menus = category switch
             {
                 category.All => GetAllMenu(),
@@ -37,7 +36,7 @@ namespace Canteen.Controller
                 _ => null
             };
 
-            return menuService.ShowMenu(menus);
+            return ShowMenu(menus);
         }
 
         public List<T> GetMenuByCategory<T>(int categoryId) where T : class, new()

@@ -5,16 +5,20 @@ namespace Canteen.View
 {
     public partial class OrderMenu : Form
     {
-        private readonly ProductController _control = new ProductController();
+        private readonly OrderController order;
+
+        public Panel panel => detailPanel;
+
         public OrderMenu()
         {
+            this.order = new OrderController(this);
             InitializeComponent();
             LoadMenu();
         }
 
         private void LoadMenu()
         {
-            foreach (var menu in _control.ShowMenu(ProductController.category.All))
+            foreach (var menu in order.ShowMenu(OrderController.category.All))
                 menuPanel.Controls.Add(menu);
 
             ChangePanelSize();
@@ -29,7 +33,7 @@ namespace Canteen.View
         private void btnFood_Click(object sender, EventArgs e)
         {
             menuPanel.Controls.Clear();
-            foreach (var menu in _control.ShowMenu(ProductController.category.Food))
+            foreach (var menu in order.ShowMenu(OrderController.category.Food))
                 menuPanel.Controls.Add(menu);
 
             ChangePanelSize();
@@ -38,23 +42,24 @@ namespace Canteen.View
         private void btnDrink_Click(object sender, EventArgs e)
         {
             menuPanel.Controls.Clear();
-            foreach (var menu in _control.ShowMenu(ProductController.category.Drink))
+            foreach (var menu in order.ShowMenu(OrderController.category.Drink))
                 menuPanel.Controls.Add(menu);
             ChangePanelSize();
         }
 
+        // Responsive Form
         private void MenuForm_Resize(object sender, EventArgs e)
         {
             int totalWidth = this.ClientSize.Width;
             int totalHeight = this.ClientSize.Height;
             int margin = 10;
 
-            int menuPanelWidth = ((2 * totalWidth) / 3) - (2 * margin);
+            int menuPanelWidth = ((3 * totalWidth) / 4) - (2 * margin);
             int menuPanelHeight = totalHeight - (totalHeight * 4 / 20) - margin;
 
             int cartBtnHeight = (totalHeight / 7) - (3 * margin);
 
-            int detailPanelWidth = (totalWidth / 3) - margin;
+            int detailPanelWidth = (totalWidth / 4) - margin;
             int detailPanelHeight = totalHeight - (cartBtnHeight + 3 * margin);
 
 
@@ -70,15 +75,12 @@ namespace Canteen.View
             ChangePanelSize();
         }
 
+        // Responsive Panel Menu
         private void ChangePanelSize()
         {
 
             int margin = 10;
             int panelWidth = ((menuPanel.ClientSize.Width - margin) / 4) - (margin);
-            //if (menuPanel.VerticalScroll.Visible)
-            //    panelWidth = ((menuPanel.ClientSize.Width - margin) / 4) - (margin);
-            //else 
-            //    panelWidth = (menuPanel.ClientSize.Width / 4) - (margin);
 
             var panels = menuPanel.Controls.OfType<Panel>().ToList();
 

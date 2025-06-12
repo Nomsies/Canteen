@@ -2,7 +2,7 @@
 
 namespace Canteen.Service
 {
-    public class MenuPanelService
+    public class ProductService
     {
         //public List<FlowLayoutPanel> ShowMenu(category category)
         //{
@@ -69,12 +69,12 @@ namespace Canteen.Service
                 }
             };
 
-            panel.Click += (sender, e) => { };
+            panel.Click += (sender, e) => { ShowDetailMenu(menu); };
 
             return panel;
         }
 
-        public List<FlowLayoutPanel> ShowMenu(List<Menu> menuList)
+        protected List<FlowLayoutPanel> ShowMenu(List<Menu> menuList)
         {
             int top;
             int right = 0;
@@ -90,5 +90,7 @@ namespace Canteen.Service
 
             return menus;
         }
+
+        public virtual void ShowDetailMenu(Menu menu) { }
     }
 }
