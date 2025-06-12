@@ -76,6 +76,7 @@
             btnCart.TabIndex = 2;
             btnCart.Text = "Cart";
             btnCart.UseVisualStyleBackColor = true;
+            btnCart.Click += btnCart_Click;
             // 
             // btnAll
             // 

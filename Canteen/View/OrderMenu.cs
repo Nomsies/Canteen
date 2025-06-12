@@ -89,13 +89,18 @@ namespace Canteen.View
             foreach (var panel in panels)
             {
                 panel.Size = new Size(panelWidth, panelWidth + 20);
-                
+
                 PictureBox pictureBox = panel.Controls.OfType<PictureBox>().SingleOrDefault();
                 pictureBox.Size = new Size(panelWidth - (2 * margin), panelWidth - (2 * margin));
-                
+
                 var labels = panel.Controls.OfType<Label>().ToList();
                 foreach (var label in labels) label.Size = new Size(panelWidth, 24);
             }
+        }
+
+        private void btnCart_Click(object sender, EventArgs e)
+        {
+
         }
 
         //private void button1_Click(object sender, EventArgs e)

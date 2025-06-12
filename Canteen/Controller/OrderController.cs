@@ -39,7 +39,7 @@ namespace Canteen.Controller
             Size pSize = view.panel.ClientSize;
             Size imageSize = new Size(pSize.Width - 60, pSize.Width - 60);
             Size labelSize = new Size(pSize.Width, 32);
-            Size buttonSize = new Size(pSize.Width - 30, 20);
+            Size buttonSize = new Size(pSize.Width - 30, 32);
             int margin = 10;
 
             view.panel.Controls.Clear();
@@ -48,7 +48,7 @@ namespace Canteen.Controller
             {
                 Text = "Add to Cart",
                 Size = buttonSize,
-                Location = new Point(15, pSize.Height - 35)
+                Location = new Point(15, pSize.Height - 47)
             };
 
             btnBuy.Click += (sender, e) => { orderMenu.Add(menu); };
