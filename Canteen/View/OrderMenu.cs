@@ -83,7 +83,6 @@ namespace Canteen.View
 
             var panels = menuPanel.Controls.OfType<Panel>().ToList();
 
-            label1.Text = menuPanel.VerticalScroll.Visible.ToString();
             if (panels.Count == 0) return;
 
             foreach (var panel in panels)
